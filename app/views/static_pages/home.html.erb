@@ -1,0 +1,19 @@
+<% provide(:title, 'Home') %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) %></title>
+  </head>
+  <body>
+    <h1>Welcome Page</h1>
+    <p>
+    <h3>Quick guide</h3>
+    The app provides a quik way to order food for the users and add thier retaurants to the list for the agents.
+    Please feel free to contact our support team for more details
+    </p>
+    <span class="signupspan"><span>
+        <a href="users/new" class = "btn btn-primary">Sign up(User)</a>
+        <a  href="agents/new" class = "btn btn-primary">Sign up(Agent)</a>
+    </span></span>
+  </body>
+</html>

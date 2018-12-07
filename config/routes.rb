@@ -1,4 +1,8 @@
 HappyTummy::Application.routes.draw do
+  match '/help',    to: 'static_pages#help',    via: 'get'
+  match '/home',   to: 'static_pages#home',   via: 'get'
+  match '/contact', to: 'static_pages#contact', via: 'get'
+  root  "static_pages#home"
   resources :carts
 
   resources :agents
