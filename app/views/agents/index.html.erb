@@ -1,0 +1,39 @@
+<h1>Listing agents</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Confpassword</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Items</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @agents.each do |agent| %>
+      <tr>
+        <td><%= agent.name %></td>
+        <td><%= agent.email %></td>
+        <td><%= agent.password %></td>
+        <td><%= agent.confpassword %></td>
+        <td><%= agent.address %></td>
+        <td><%= agent.phone %></td>
+        <td><%= agent.items %></td>
+        <td><%= link_to 'Show', agent %></td>
+        <td><%= link_to 'Edit', edit_agent_path(agent) %></td>
+        <td><%= link_to 'Destroy', agent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Agent', new_agent_path %>
