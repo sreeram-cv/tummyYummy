@@ -19,7 +19,7 @@ body {
 		linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
 }
 /*form styles*/
-#new_user ,#new_agent{
+#new_user ,#new_agent,.signinform,.edit_user,.edit_agent{
 	width: 400px;
 	margin: 50px auto;
 	text-align: center;
@@ -30,7 +30,7 @@ body {
 	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
     padding:15px;
 }
-#new_user fieldset,#new_agent fieldset{
+#new_user fieldset,#new_agent fieldset,.signinform fieldset,.edit_agent fieldset,.edit_user fieldset{
 	background: white;
 	border: 0 none;
 	border-radius: 3px;
@@ -44,7 +44,7 @@ body {
 	position: relative;
 }
 /*inputs*/
-#new_user input:not(.action-button input),#new_agent input:not(.action-button input),  #msform textarea {
+#new_user input:not(.action-button input),.signinform input,#new_agent input:not(.action-button input),  #msform textarea ,.edit_user input:not(.action-button input) ,.edit_agent input:not(.action-button input){
 	padding: 15px;
 	border: 1px solid #ccc;
 	border-radius: 3px;
@@ -56,7 +56,7 @@ body {
 	font-size: 13px;
 }
 /*buttons*/
-#new_user .action-button input,#new_agent .action-button input{
+#new_user .action-button input,#new_agent .action-button input,.edit_user .action-button input,.edit_agent .action-button input{
 	width: 100px;
 	background: #27AE60;
 	font-weight: bold;
@@ -67,7 +67,7 @@ body {
 	padding: 10px 5px;
 	margin: 10px 5px;
 }
-#new_user .action-button input:hover, #new_agent .action-button input:hover,#msform .action-button input:focus {
+#new_user .action-button input:hover, #new_agent .action-button input:hover,#msform .action-button input:focus, .edit_user .action-button input:hover,.edit_agent .action-button input:hover {
 	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
 /*headings*/

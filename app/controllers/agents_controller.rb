@@ -1,5 +1,7 @@
 class AgentsController < ApplicationController
   before_action :set_agent, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:edit, :update,:show]
+  before_action :correct_user,   only: [:edit, :update,:show]
 
   # GET /agents
   # GET /agents.json
@@ -42,7 +44,8 @@ class AgentsController < ApplicationController
   def update
     respond_to do |format|
       if @agent.update(agent_params)
-        format.html { redirect_to @agent, notice: 'Agent was successfully updated.' }
+        flash.now[:success] = "Profile updated"
+        format.html { redirect_to @agent}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -59,6 +62,17 @@ class AgentsController < ApplicationController
       format.html { redirect_to agents_url }
       format.json { head :no_content }
     end
+  end
+
+  def signed_in_user
+    unless signed_in?
+      redirect_to signin_url, notice: "Please sign in."
+    end
+  end
+
+  def correct_user
+    @user = Agent.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
   end
 
   private

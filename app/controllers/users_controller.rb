@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in_user, only: [:edit, :update,:show]
+  before_action :correct_user,   only: [:edit, :update,:show]
 
   # GET /users
   # GET /users.json
@@ -42,7 +44,8 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        flash.now[:success] = "Profile updated"
+        format.html { redirect_to @user}
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -59,6 +62,17 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url }
       format.json { head :no_content }
     end
+  end
+
+  def signed_in_user
+    unless signed_in?
+      redirect_to signin_url, notice: "Please sign in."
+    end
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
   end
 
   private
