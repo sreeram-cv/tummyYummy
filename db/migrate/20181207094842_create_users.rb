@@ -4,7 +4,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.string :password
-      t.string :confpassword
       t.string :address
       t.string :phone
       t.integer :cart_id
