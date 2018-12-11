@@ -1,30 +1,30 @@
+
+
+<%= link_to(image_tag("cart.png"), carts_path,class:"cart") %>
+<%= link_to(image_tag("user.png"), edit_user_path(@user),class:"profo") %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<p class="uname" >
   <%= @user.name %>
 </p>
+<div class = "agentsContainer">
+  <div class= "agentsHeader">Hotels near you</div>
+  <% @agents.each do |agent| %>
+    <div class = "agents">
+    <div class= "agentName" data-id="<%= agent.id %>">
+      <%= agent.name %>
+    </div>
+    <div class= "itemsContainer hide ">
+      <% agent.items.split(",").each do |item| %>
+        <div class = "items col-md-6">
+          <%=image_tag("food.png")%>
+          <input type="checkbox" class="test"/>
+          <span> <%= item %> </span>
+        </div>
+      <%end %>
+      <div><button type="button" class="btn btn-primary addToCart">Add to Cart</button></div>
+    </div>
+  </div> 
+  <%end %>
+</div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
-
-<p>
-  <strong>Cart:</strong>
-  <%= @user.cart_id %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

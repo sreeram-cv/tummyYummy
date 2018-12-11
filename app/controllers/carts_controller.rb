@@ -25,14 +25,12 @@ class CartsController < ApplicationController
   # POST /carts.json
   def create
     @cart = Cart.new(cart_params)
-
     respond_to do |format|
       if @cart.save
-        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
+        
+        format.html { redirect_to @cart}
+        #flash[:success] = "Items added to cart successfully"
         format.json { render action: 'show', status: :created, location: @cart }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
       end
     end
   end

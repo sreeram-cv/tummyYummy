@@ -5,6 +5,7 @@ HappyTummy::Application.routes.draw do
 
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
+  match '/carts/create', to: 'carts#create',     via: 'post'
   
   root  "static_pages#home"
   resources :carts

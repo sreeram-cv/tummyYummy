@@ -30,6 +30,7 @@ class AgentsController < ApplicationController
 
     respond_to do |format|
       if @agent.save
+        sign_in @agent,"agent"
         format.html { redirect_to @agent, notice: 'Agent was successfully created.' }
         format.json { render action: 'show', status: :created, location: @agent }
       else
