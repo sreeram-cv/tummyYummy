@@ -11,7 +11,7 @@
   <div class= "agentsHeader">Hotels near you</div>
   <% @agents.each do |agent| %>
     <div class = "agents">
-    <div class= "agentName" data-id="<%= agent.id %>">
+    <div class= "agentName" data-id="<%= agent.id %>" user-id="<%= @user.id %>">
       <%= agent.name %>
     </div>
     <div class= "itemsContainer hide ">
@@ -26,5 +26,6 @@
     </div>
   </div> 
   <%end %>
+</div>
 </div>
 

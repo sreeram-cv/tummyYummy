@@ -38,4 +38,8 @@ module SessionsHelper
         cookies.delete(:remember_token)
         self.current_user = nil
       end
+
+      def findAgent(id)
+        agent = Agent.find_by(id: id).name
+      end
 end

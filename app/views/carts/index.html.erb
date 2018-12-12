@@ -1,29 +1,24 @@
-<h1>Listing carts</h1>
+<%= link_to "back",user_path(@user),class:"signedUserHome" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Agent</th>
-      <th>Items</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<div class = "agentsContainer">
+  <div class= "agentsHeader">Your cart</div>
+  <% @user.carts.each do |cart| %>
+    <div class = "agents">
+    <div class= "agentName" data-id="<%= cart.id %>">
+      <%= findAgent(cart.agent_id) %>
+      <%= image_tag "delete.png", class:"deleteCartItems",data: { toggle: "modal" , target:"#myModal"}  %>
+    </div>
+    <div class= "itemsContainer hide ">
+      <% cart.items.split(",").each do |item| %>
+        <div class = "items col-md-6">
+          <%=image_tag("food.png")%>
+          <span> <%= item %> </span>
+        </div>
+      <%end %>
+    </div>
+  </div> 
+  <%end %>
+</div>
+</div>
 
-  <tbody>
-    <% @carts.each do |cart| %>
-      <tr>
-        <td><%= cart.agent_id %></td>
-        <td><%= cart.items %></td>
-        <td><%= link_to 'Show', cart %></td>
-        <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-        <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Cart', new_cart_path %>

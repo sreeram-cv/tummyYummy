@@ -5,7 +5,12 @@ class CartsController < ApplicationController
   # GET /carts.json
   def index
     @carts = Cart.all
+    remember_token = User.digest(cookies[:remember_token])
+    @user = User.find_by(remember_token: remember_token)
+    
   end
+
+ 
 
   # GET /carts/1
   # GET /carts/1.json
@@ -25,6 +30,7 @@ class CartsController < ApplicationController
   # POST /carts.json
   def create
     @cart = Cart.new(cart_params)
+
     respond_to do |format|
       if @cart.save
         
@@ -67,6 +73,6 @@ class CartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
-      params.require(:cart).permit(:agent_id, :items)
+      params.require(:cart).permit(:agent_id, :items,:user_id)
     end
 end
