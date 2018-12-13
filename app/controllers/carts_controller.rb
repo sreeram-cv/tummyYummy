@@ -41,6 +41,17 @@ class CartsController < ApplicationController
     end
   end
 
+  def ordersNew
+    remember_token = User.digest(cookies[:remember_token])
+    @user = User.find_by(remember_token: remember_token)
+    curcart = Cart.find_by(id:params[:cart_id])
+    items = curcart[:items];
+    @order = Order.new({items:items,user_id:params[:user_id],agent_id:params[:agent_id]});
+    @order.save();
+    flash[:success] = "Items ordered successfully"
+    redirect_to @user
+  end
+
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
@@ -73,6 +84,6 @@ class CartsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cart_params
-      params.require(:cart).permit(:agent_id, :items,:user_id)
+      params.require(:cart).permit(:agent_id, :items,:user_id,:cart_id)
     end
 end

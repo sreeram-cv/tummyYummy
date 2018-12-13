@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action { flash.clear }
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :signed_in_user, only: [:edit, :update,:show]
   before_action :correct_user,   only: [:edit, :update,:show]
@@ -32,7 +33,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         sign_in @user,"user"
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to @user}
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }

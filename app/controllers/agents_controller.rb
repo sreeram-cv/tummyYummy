@@ -1,4 +1,5 @@
 class AgentsController < ApplicationController
+  before_action { flash.clear }
   before_action :set_agent, only: [:show, :edit, :update, :destroy]
   before_action :signed_in_user, only: [:edit, :update,:show]
   before_action :correct_user,   only: [:edit, :update,:show]
@@ -12,6 +13,7 @@ class AgentsController < ApplicationController
   # GET /agents/1
   # GET /agents/1.json
   def show
+    
   end
 
   # GET /agents/new
@@ -31,7 +33,7 @@ class AgentsController < ApplicationController
     respond_to do |format|
       if @agent.save
         sign_in @agent,"agent"
-        format.html { redirect_to @agent, notice: 'Agent was successfully created.' }
+        format.html { redirect_to @agent}
         format.json { render action: 'show', status: :created, location: @agent }
       else
         format.html { render action: 'new' }

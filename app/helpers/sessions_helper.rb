@@ -42,4 +42,16 @@ module SessionsHelper
       def findAgent(id)
         agent = Agent.find_by(id: id).name
       end
+
+      def findUser(id)
+        agent = User.find_by(id: id).name
+      end
+
+      def findUserPhone(id)
+        agent = User.find_by(id: id).phone
+      end
+
+      def findUserAddress(id)
+        agent = User.find_by(id: id).address
+      end
 end

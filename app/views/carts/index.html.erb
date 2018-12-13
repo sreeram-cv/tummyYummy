@@ -1,11 +1,15 @@
-<%= link_to "back",user_path(@user),class:"signedUserHome" %>
+
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <div class = "agentsContainer">
-  <div class= "agentsHeader">Your cart</div>
+  <div class= "agentsHeader">
+  <%= link_to "back",user_path(@user),class:"signedUserHome" %>
+  Your cart
+  </div>
+
   <% @user.carts.each do |cart| %>
     <div class = "agents">
-    <div class= "agentName" data-id="<%= cart.id %>">
+    <div class= "agentName" data-id="<%= cart.id %>" agent-id="<%= cart.agent_id%>" user-id="<%= cart.user_id %>">
       <%= findAgent(cart.agent_id) %>
       <%= image_tag "delete.png", class:"deleteCartItems",data: { toggle: "modal" , target:"#myModal"}  %>
     </div>
@@ -18,6 +22,15 @@
       <%end %>
     </div>
   </div> 
+  <%end %>
+  <% if @user.carts.length==0 %>
+    <div class = "emptyagents">
+        The cart is empty
+    </div>
+  <%else%>
+  <div class = "submitContainer">
+    <button type="button" class="btn buyNow">Buy now!</button>
+  </div>  
   <%end %>
 </div>
 </div>

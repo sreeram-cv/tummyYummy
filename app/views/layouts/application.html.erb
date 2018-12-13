@@ -49,6 +49,25 @@
 
         </div>
       </div>
+      <div id="myModal1" class="modal fade modal-sm" role="dialog">
+        <div class="modal-dialog">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Order delivery confirmation</h4>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure the items are delivered and ready to be removed from the order list?</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class=" deliveryConfirmation btn btn-default" data-dismiss="modal">remove</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
