@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.5'
+ruby '2.3.8'
 #ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.8'
