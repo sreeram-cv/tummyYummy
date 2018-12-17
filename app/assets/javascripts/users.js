@@ -18,7 +18,7 @@ $(document).on("click",".addToCart",function(e){
     var user_id = $(this).parents(".agents").find(".agentName").attr("user-id").trim();
     if(selected.length>0){
         $.ajax ({
-            url: "https://stormy-lowlands-95872.herokuapp.com/carts/create",
+            url: window.location.origin+"/carts/create",
             type: 'post',
             dataType: 'json',
             data:{cart:{items,agent_id,user_id}},
@@ -44,7 +44,7 @@ $(document).on("click",".deleteConfirmation",function(e){
         $(".submitContainer").remove();
     }
     $.ajax ({
-        url: "https://stormy-lowlands-95872.herokuapp.com/carts/"+cartId,
+        url: window.location.origin+"/carts/"+cartId,
         type: 'delete',
         dataType: 'json',
         success: function(){
@@ -69,7 +69,7 @@ $(document).on("click",".deliveryConfirmation",function(e){
         $(".submitContainer").remove();
     }
     $.ajax ({
-        url: "https://stormy-lowlands-95872.herokuapp.com/orders/"+orderId,
+        url: window.location.origin+"/orders/"+orderId,
         type: 'delete',
         dataType: 'json',
         success: function(){
@@ -101,13 +101,13 @@ var saveOrder = function(agent){
     var agentId= $(agent).find(".agentName").attr("agent-id");
     var cartId= $(agent).find(".agentName").attr("data-id");
     $.ajax ({
-        url: "https://stormy-lowlands-95872.herokuapp.com/orders/new",
+        url: window.location.origin+"/orders/new",
         type: 'post',
         dataType: 'json',
         data:{cart_id:cartId,agent_id:agentId,user_id:userId},
         success: function(){
             $.ajax ({
-                url: "https://stormy-lowlands-95872.herokuapp.com/carts/"+cartId,
+                url: "carts/"+cartId,
                 type: 'delete',
                 dataType: 'json',
                 success: function(){
