@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.5'
+ruby '2.3.5'
 #ruby-gemset=railstutorial_rails_4_0
 
 gem 'rails', '4.0.8'
@@ -14,9 +14,9 @@ group :development, :test do
   gem 'rspec-rails', '2.13.1'
 end
 
-gem 'rake', '< 11.0'
+gem 'rake', '10.5.0'
 gem 'sass-rails', '4.0.3'
-gem 'uglifier', '2.1.1'
+gem 'uglifier', '4.1.20'
 gem 'coffee-rails', '4.0.1'
 gem 'jquery-rails', '3.0.4'
 gem 'turbolinks', '1.1.1'
